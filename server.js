@@ -3,7 +3,7 @@ const mongoose = require("mongoose")
 let genData = require('./models/gen')
 
 const windrouter = require("./routers/index")
-// genData.genData()
+genData.genData()
 
 mongoose.connect("mongodb://localhost/wind").then(() => {console.log("db connect")}).catch((error) => {throw error})
 const app = express()

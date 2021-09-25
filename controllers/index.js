@@ -7,7 +7,7 @@ exports.render = async (req,res,next) => {
 exports.getData = async (req,res,next) => {
     try {
         const result = await Wind.find()
-
+        console.log(result.length)
         res.status(201).json({
             result:result,
             message:"ดึงข้อมูลสำเร็จ!!" 
