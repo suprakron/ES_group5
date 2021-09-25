@@ -1,12 +1,16 @@
 const Wind = require("../models/wind")
 
+exports.render = async (req,res,next) => {
+    res.render("index",{title:"dashboard"})
+}
+
 exports.getData = async (req,res,next) => {
     try {
         const result = await Wind.find()
 
         res.status(201).json({
             result:result,
-            message:"ดึงข้อมูลสำเร็จ!!"
+            message:"ดึงข้อมูลสำเร็จ!!" 
         }) //รหัสให้มันทำเสร็จแล้ว แสดง
 
 
@@ -36,4 +40,5 @@ exports.AddData = async (req,res,next) => {
         next(error)
     }
 }
+
 

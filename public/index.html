@@ -1,0 +1,77 @@
+<!-- <html>
+
+ <head>
+   <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/1486/1486247.png" />
+   <meta charset="utf-8">
+   <title>Windly</title>
+ </head>
+
+ <body BACKGROUND ="https://www.teahub.io/photos/full/176-1762598_renewable-energy.jpg">
+   <h1>
+     <center>
+      <img src="https://img-premium.flaticon.com/png/512/3506/premium/3506868.png?token=exp=1632558293~hmac=a1e360e77aba74822b1f388981f3ef9c" width="50" height="50">
+      <FONT SIZE=26> Windly </FONT>
+      <img src="https://img-premium.flaticon.com/png/512/3506/premium/3506868.png?token=exp=1632558293~hmac=a1e360e77aba74822b1f388981f3ef9c" width="50" height="50">
+     </center>
+   </h1>
+     <center>
+     <button type="button"
+     onclick="document.getElementById('demo').innerHTML = Date()"> Week </button>
+     <button type="button"
+     onclick="document.getElementById('demo').innerHTML = Date()"> Month </button>
+     </center>
+     
+ </body>
+
+</html> -->
+
+
+
+<!DOCTYPE html>  
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+  <title>Windly</title>
+</head>
+
+<body ng-app=""> 
+  <input type="text" ng-model="another">
+  <span> {{ another }} </span>
+
+  <canvas id="myChart" width="100" height="100"></canvas>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+
+  <script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+          label: 'My First Dataset',
+          data: [65, 59, 80, 81, 56, 55, 40],
+          fill: false,
+          borderColor: 'rgb(75, 192, 192)',
+          tension: 0.1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+</body>
+
+</html> 
+<!-- ตัวอย่าง chart ลองหากันดู อันนี้พี่หาไว้ให้ดูเฉยๆ  -->
