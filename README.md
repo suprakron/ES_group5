@@ -1,7 +1,7 @@
 # ES_group5
 # ES_group5
 
-
+***ประกาศ ฝั่ง front-end ทำที่ folder public นะ 
 
 1.โคลนลงมา
 
