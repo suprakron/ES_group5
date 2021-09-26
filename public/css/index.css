@@ -1,0 +1,6 @@
+body{
+     min-height: 200vh;
+    max-width: 600px;
+    background-color: rgb(214, 204, 185); 
+    margin: 0 auto;
+}
