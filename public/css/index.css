@@ -4,3 +4,13 @@ body{
     background-color: rgb(214, 204, 185); 
     margin: 0 auto;
 }
+
+img {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 150px;
+    left: 1;
+  }
+  
+  
