@@ -42,10 +42,25 @@
 </head>
 
 <body ng-app=""> 
+
   <header align="center"> <h1>แสดงความเร็วลม</h1></header>
 
   
   <img src="./images/kanghan.jpg" alt="">
+
+  <div class="dropdown open">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false">
+         รายสัปดาห์
+        </button>
+    <div class="dropdown-menu" aria-labelledby="triggerId">
+      <button class="dropdown-item" href="#">รายเดือน</button>
+      <button class="dropdown-item disabled" href="#">รายปี</button>
+    </div>
+  </div>
+
+
+ 
 
   <input type="text" ng-model="another"><button>แสดงค่า</button>
   <span> {{ another }} </span>
@@ -81,4 +96,4 @@
 </body>
 
 </html> 
-<!-- ตัวอย่าง chart ลองหากันดู อันนี้พี่หาไว้ให้ดูเฉยๆ  -->
+ 
