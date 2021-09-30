@@ -1,32 +1,3 @@
-<!-- <html>
-
- <head>
-   <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/1486/1486247.png" />
-   <meta charset="utf-8">
-   <title>Windly</title>
- </head>
-
- <body BACKGROUND ="https://www.teahub.io/photos/full/176-1762598_renewable-energy.jpg">
-   <h1>
-     <center>
-      <img src="https://img-premium.flaticon.com/png/512/3506/premium/3506868.png?token=exp=1632558293~hmac=a1e360e77aba74822b1f388981f3ef9c" width="50" height="50">
-      <FONT SIZE=26> Windly </FONT>
-      <img src="https://img-premium.flaticon.com/png/512/3506/premium/3506868.png?token=exp=1632558293~hmac=a1e360e77aba74822b1f388981f3ef9c" width="50" height="50">
-     </center>
-   </h1>
-     <center>
-     <button type="button"
-     onclick="document.getElementById('demo').innerHTML = Date()"> Week </button>
-     <button type="button"
-     onclick="document.getElementById('demo').innerHTML = Date()"> Month </button>
-     </center>
-     
- </body>
-
-</html> -->
-
-
-
 <!DOCTYPE html>  
 <html lang="en">
 
@@ -35,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./css/index.css">
+  
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
 
@@ -43,29 +15,15 @@
 
 <body ng-app=""> 
 
-  <header align="center"> <h1>แสดงความเร็วลม</h1></header>
-
-  
-  <img src="./images/kanghan.jpg" alt="">
-
-  <div class="dropdown open">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="false">
-         รายสัปดาห์
-        </button>
-    <div class="dropdown-menu" aria-labelledby="triggerId">
-      <button class="dropdown-item" href="#">รายเดือน</button>
-      <button class="dropdown-item disabled" href="#">รายปี</button>
-    </div>
-  </div>
-
-
- 
-
-  <input type="text" ng-model="another"><button>แสดงค่า</button>
-  <span> {{ another }} </span>
+  <header align="center"> <h1>แสดงความเร็วลม</h1>
+    <img src="./images/kanghan.jpg" alt=""></header>
+ <!--<input type="text" ng-model="another"><button>แสดงค่า</button>--> 
+<span> {{ another }} </span>
 
   <canvas id="myChart" width="100" height="100"></canvas>
+  <button type="button" class="btn btn-primary">รายวัน</button>
+  <button type="button" class="btn btn-primary">รายเดือน</button>
+  
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
@@ -96,4 +54,7 @@
 </body>
 
 </html> 
+ 
+
+
  
