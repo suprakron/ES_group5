@@ -1,84 +1,68 @@
-<!-- <html>
-
- <head>
-   <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/1486/1486247.png" />
-   <meta charset="utf-8">
-   <title>Windly</title>
- </head>
-
- <body BACKGROUND ="https://www.teahub.io/photos/full/176-1762598_renewable-energy.jpg">
-   <h1>
-     <center>
-      <img src="https://img-premium.flaticon.com/png/512/3506/premium/3506868.png?token=exp=1632558293~hmac=a1e360e77aba74822b1f388981f3ef9c" width="50" height="50">
-      <FONT SIZE=26> Windly </FONT>
-      <img src="https://img-premium.flaticon.com/png/512/3506/premium/3506868.png?token=exp=1632558293~hmac=a1e360e77aba74822b1f388981f3ef9c" width="50" height="50">
-     </center>
-   </h1>
-     <center>
-     <button type="button"
-     onclick="document.getElementById('demo').innerHTML = Date()"> Week </button>
-     <button type="button"
-     onclick="document.getElementById('demo').innerHTML = Date()"> Month </button>
-     </center>
-     
- </body>
-
-</html> -->
-
-
-
-<!DOCTYPE html>  
-<html lang="en">
+<html>
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./css/index.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <!-- Including AngularJS -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js"></script>
 
+  <!-- Including the fusioncharts core library -->
+  <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
 
-  <title>Windly</title>
+  <!-- Including the angularjs-fusioncharts directive-->
+  <script type="text/javascript"
+    src="https://unpkg.com/angularjs-fusioncharts@4.0.1/dist/angular-fusioncharts.js"></script>
+
+  <!-- Including the fusion theme -->
+  <script type="text/javascript"
+    src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script>
+
+  <script type="text/javascript">
+    var myApp = angular.module('myApp', ['ng-fusioncharts']);
+
+    //STEP 2 - Chart Data
+    const chartData = [
+      { label: 'Venezuela', value: '290' },
+      { label: 'Saudi', value: '260' },
+      { label: 'Canada', value: '180' },
+      { label: 'Iran', value: '140' },
+      { label: 'Russia', value: '115' },
+      { label: 'UAE', value: '100' },
+      { label: 'US', value: '30' },
+      { label: 'China', value: '30' }
+    ];
+
+    // STEP 3 - Chart Configurations
+    myApp.controller('MyController', ['$scope', '$http', function ($scope, $http) {
+      $http.get("http://localhost:4000/wind").then(function (res) {
+        console.log(res.data.data.result)
+        // $scope.data = res.data.result
+        const dataSource = {
+          chart: {
+            caption: "Windy",
+            subCaption: "In MMbbl = One Million barrels",
+            xAxisName: "Country",
+            yAxisName: "Reserves (MMbbl)",
+            numberSuffix: "K",
+            theme: "fusion",
+
+          },
+          // Chart Data - from step 2
+          "data": res.data.data.result
+        };
+
+        // datasource
+        $scope.myDataSource = dataSource
+      })
+
+    }]);
+  </script>
+
 </head>
 
-<body ng-app=""> 
-  <header align="center"> <h1>แสดงความเร็วลม</h1></header>
-
-  
-  <img src="./images/kanghan.jpg" alt="">
-
-  <input type="text" ng-model="another"><button>แสดงค่า</button>
-  <span> {{ another }} </span>
-
-  <canvas id="myChart" width="100" height="100"></canvas>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-
-
-  <script>
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var myChart = new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-          label: 'My First Dataset',
-          data: [65, 59, 80, 81, 56, 55, 40],
-          fill: false,
-          borderColor: 'rgb(75, 192, 192)',
-          tension: 0.1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
-      }
-    });
-  </script>
+<body ng-app="myApp">
+  <div ng-controller="MyController">
+    <div fusioncharts id="my-chart-id" width="700" height="400" type="line" dataSource="{{myDataSource}}">
+    </div>
+  </div>
 </body>
 
-</html> 
-<!-- ตัวอย่าง chart ลองหากันดู อันนี้พี่หาไว้ให้ดูเฉยๆ  -->
+</html>
