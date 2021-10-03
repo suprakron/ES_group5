@@ -130,7 +130,7 @@
       // exit 
       city.exit().remove();
       return zoom.x(x);
-    };
+    }; 
   };
 
   // driver part
