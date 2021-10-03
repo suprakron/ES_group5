@@ -1,6 +1,6 @@
 body{
      min-height: 200vh;
-    max-width: 600px;
+    max-width: 400px;
     background-color: rgb(214, 204, 185); 
     margin: 0 auto;
 }
@@ -10,7 +10,13 @@ img {
     border-radius: 4px;
     padding: 5px;
     width: 150px;
-    left: 1;
+    left: 1 ;
   }
+
+button{
+ background-color: blueviolet;
+
+}
+
   
   

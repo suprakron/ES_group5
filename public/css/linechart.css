@@ -1,0 +1,54 @@
+body {
+    padding: 10px 20px;
+    background-color: #F5E1B3;
+    font-family: sans-serif;
+    text-align: center;
+    color: #777;
+  }
+  
+  #main {
+    margin: 0 auto;
+  }
+  
+  .note {
+    font-size: 0.8em;
+  }
+  
+  button {
+    background: #f7f7f7;
+    border-radius: 4px;
+    font-size: 1.2em;
+    padding: 5px 8px 5px 8px;
+  }
+  
+  .tool {
+    width: 200px;
+    margin: 0 auto;
+  }
+  
+  svg .axis {
+    font-size: 8px;
+  }
+  svg .axis path,
+  svg .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+  }
+  svg .line {
+    fill: none;
+    stroke: steelblue;
+    stroke-width: 5px;
+  }
+  svg .tick > line {
+    display: none;
+  }
+  svg rect.zoom-panel {
+    cursor: move;
+    fill: none;
+    pointer-events: all;
+  }
+  svg .dot {
+    stroke-width: 2px;
+    fill: #fff;
+  }

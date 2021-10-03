@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>wind speed</title>
+ <link rel="stylesheet" href="./css/linechart.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div id="main">
+  <h1>แสดงค่าความเร็วลม</h1>
+  <p class="note">
+       แสดงรายวัน รายสัปดาห์ รายเดือน
+  </p>
+  <div id="chart"></div>
+  <div class="tool">
+    <button id="remove">ย้อนกลับ</button>
+    <button id="add">ถัดไป</button>
+    
+    
+  </div>
+</div>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.1/d3.min.js'></script>
+  <script  src="./js/linechart.js"></script>
+
+</body>
+</html>
