@@ -1,17 +1,27 @@
 const Wind = require("../models/wind")
 
-exports.render = async (req,res,next) => {
-    res.render("index",{title:"dashboard"})
+exports.render = async (req, res, next) => {
+    res.render("index", { title: "dashboard" })
 }
 
-exports.getData = async (req,res,next) => {
+exports.getData = async (req, res, next) => {
     try {
-        const result = await Wind.find()
-        console.log(result.length)
+        const result = await Wind.find();
+
+        let data = result.map(function (e) {
+            return {
+                label: e.timeStemp,
+                value: e.windSpeed.toString(),
+            }
+        })
+
+
         res.status(201).json({
-            result:result,
-            message:"ดึงข้อมูลสำเร็จ!!" 
-        }) //รหัสให้มันทำเสร็จแล้ว แสดง
+            data: {
+                result: data,
+                message: "เรียบร้อยแล้ว...",
+            },
+        });
 
 
     } catch (error) {
@@ -19,7 +29,7 @@ exports.getData = async (req,res,next) => {
     }
 }
 
-exports.AddData = async (req,res,next) => {
+exports.AddData = async (req, res, next) => {
     try {
         const sensorId = Math.random()
         const windSpeed = Math.random()
@@ -33,7 +43,7 @@ exports.AddData = async (req,res,next) => {
         await wind.save() //ทำที่ละ step ทำที่ละฟังก์ชัน
 
         res.status(201).json({
-            message:"บันทึกข้อมูลสำเร็จ!!"
+            message: "บันทึกข้อมูลสำเร็จ!!"
         })
 
     } catch (error) {
