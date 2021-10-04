@@ -57,7 +57,7 @@
     svg.append("g").attr("class", "x axis").attr("transform", `translate(0,${height})`).call(xAxis);
     
     // y axis
-    svg.append("g").attr("class", "y axis").attr("transform", "translate(0,0)").call(yAxis).append("text").attr("transform", "rotate(-90)").attr("y", -40).attr('x', -180).attr("dy", ".71em").style("text-anchor", "end").text("Temperature");
+    svg.append("g").attr("class", "y axis").attr("transform", "translate(0,0)").call(yAxis).append("text").attr("transform", "rotate(-90)").attr("y", -40).attr('x', -180).attr("dy", ".71em").style("text-anchor", "end").text("Time");
     return function(data) {
       var city, cityEnter;
       
@@ -130,7 +130,7 @@
       // exit 
       city.exit().remove();
       return zoom.x(x);
-    }; 
+    };
   };
 
   // driver part
@@ -142,7 +142,7 @@
         tempSeed = Math.round(Math.random() * 30);
         data = {
           id: id,
-          name: `City ${id}`,
+          name: `wind ${id}`,
           temps: (function() {
             var k, ref, results;
             results = [];
