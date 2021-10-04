@@ -7,26 +7,16 @@ exports.render = async (req, res, next) => {
 exports.getData = async (req, res, next) => {
     try {
         const result = await Wind.find();
-
-        let data = result.map(function (e) {
-            return {
-                label: e.timeStemp,
-                value: e.windSpeed.toString(),
-            }
-        })
-
-
+    
         res.status(201).json({
-            data: {
-                result: data,
-                message: "เรียบร้อยแล้ว...",
-            },
+          data: {
+            result: result,
+            message: "ดึงข้อมูลสำเร็จ",
+          },
         });
-
-
-    } catch (error) {
-        next(error)
-    }
+      } catch (error) {
+        next(error);
+      }
 }
 
 exports.AddData = async (req, res, next) => {
