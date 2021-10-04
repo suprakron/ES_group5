@@ -37,13 +37,14 @@
       </div>
     </div>
     <script>
+      var url=window.location.href
       const getChartData1 = async () => {
         let sensorIdData = [];
         let windSpeedValue = [];
         let timeStampLabel = [];
 
         const fetchData = async () => {
-          const res = await fetch("http://localhost:4000/wind");
+          const res = await fetch(`${url}wind`);
           const data = await res.json();
 
           console.log(data.data.result);
@@ -108,7 +109,7 @@
         let timeStampLabel = [];
 
         const fetchData = async () => {
-          const res = await fetch("http://localhost:4000/wind");
+          const res = await fetch(`${url}wind`);
           const data = await res.json();
 
           console.log(data.data.result);
@@ -173,7 +174,7 @@
         let timeStampLabel = [];
 
         const fetchData = async () => {
-          const res = await fetch("http://localhost:4000/wind");
+          const res = await fetch(`${url}wind`);
           const data = await res.json();
 
           console.log(data.data.result);
