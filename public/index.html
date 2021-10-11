@@ -12,71 +12,62 @@
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-   
+
 </head>
 <style>
-body{
+  body {
     background-color: #d0bdd9;
-}
-#chart {
+  }
+
+  #chart {
     max-width: 650px;
     margin: 35px auto;
-     
+
   }
-  h1{
-      text-align: center;
-      color: rgb(199, 34, 13);
+
+  h1 {
+    text-align: center;
+    color: rgb(199, 34, 13);
   }
-  h2{
-      text-align: center;
-      color: rgb(155, 76, 65);
+
+  h2 {
+    text-align: center;
+    color: rgb(155, 76, 65);
   }
 </style>
 
-<body >
+<body>
   <div class="border border-light p-3 mb-4">
-     <h1>wind speed</h1>
+    <h1>wind speed</h1>
   </div>
 
 
-<div class="container">
-<div class="row">
-  <div class="col-6 chart"> 
-    <h2>กราฟรายวัน</h2>
-    <div id="chart" width="400" height="400"></div>
-    <div class="text-center">
-      <button class="btn btn-danger" onclick="backdata()">ย้อนกลับ</button>
-      <button class="btn btn-primary" onclick="nextdata()">ต่อไป</button>
-     
+  <div class="container">
+    <div class="row">
+      <div class="col-6 chart">
+        <h2>กราฟรายวัน</h2>
+        <div id="chart" width="400" height="400"></div>
+        <div class="text-center">
+          <button class="btn btn-danger" onclick="backdata()">ย้อนกลับ</button>
+          <button class="btn btn-primary" onclick="nextdata()">ต่อไป</button>
+
+        </div>
+      </div>
+      <div class="col-6 chart">
+        <h2>กราฟรายสัปดาห์</h2>
+        <div id="chart2" width="400" height="400"></div>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-6 chart">
+        <h2>กราฟรายเดือน</h2>
+        <div id="chart3" width="400" height="400"></div>
+      </div>
     </div>
   </div>
-  <div class="col-6 chart"> 
-    <h2>กราฟรายสัปดาห์</h2>
-    <div id="chart2" width="400" height="400"></div>
-    <div class="text-center">
-      <button class="btn btn-danger" onclick="backdata()">ย้อนกลับ</button>
-      <button class="btn btn-primary" onclick="nextdata()">ต่อไป</button>
-     
-    </div>
-  </div>
-  
-</div>
-<div class="row">
-  <div class="col-6 chart"> 
-    <h2>กราฟรายเดือน</h2>
-    <div id="chart3" width="400" height="400"></div>
-    <div class="text-center">
-      <button class="btn btn-danger" onclick="backdata()">ย้อนกลับ</button>
-      <button class="btn btn-primary" onclick="nextdata()">ต่อไป</button>
-     
-    </div>
-  </div>
-  
-</div>
 
-</div>
-
-<script src="./js/index.js"></script>
+  <script src="./js/index.js"></script>
 
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -102,6 +93,11 @@ body{
 
 <script>
   let index = 0;
+  let index2 = 0;
+  let index3 = 0;
+
+  let d = 7208;
+  let h = 7208 * 4;
   let result = [];
   getdata()
 
@@ -119,11 +115,36 @@ body{
         let cout = index + 50
         let windSpeed = []
         let timeStemp = []
+
+
+        let windSpeed2 = []
+        let timeStemp2 = []
+
+
+        let windSpeed3 = []
+        let timeStemp3 = []
+
+
         for (index; index < cout; index++) {
           if (index === result.length) { break; }
           windSpeed.push(result[index].windSpeed);
           timeStemp.push(result[index].timeStemp);
         }
+
+
+        for (index2; index2 < cout; index2++) {
+          if (index2 * d >= result.length) { break; }
+          windSpeed2.push(result[index2 * d].windSpeed);
+          timeStemp2.push(result[index2 * d].timeStemp);
+        }
+
+
+        for (index3; index3 < cout; index3++) {
+          if (index3 * h >= result.length) { break; }
+          windSpeed3.push(result[index3 * h].windSpeed);
+          timeStemp3.push(result[index3 * h].timeStemp);
+        }
+
         var options = {
           chart: {
             type: 'line'
@@ -142,22 +163,23 @@ body{
           },
           series: [{
             name: 'sales',
-            data: windSpeed
+            data: windSpeed2
           }],
           xaxis: {
-            categories: timeStemp
+            categories: timeStemp2
           }
         }
+
         var options3 = {
           chart: {
             type: 'line'
           },
           series: [{
             name: 'sales',
-            data: windSpeed
+            data: windSpeed3
           }],
           xaxis: {
-            categories: timeStemp
+            categories: timeStemp3
           }
         }
         var chart = new ApexCharts(document.querySelector("#chart"), options);
@@ -171,7 +193,6 @@ body{
 
 
   function nextdata() {
-
     let cout = index + 50
     let windSpeed = []
     let timeStemp = []
@@ -194,11 +215,11 @@ body{
     }
     var chart = new ApexCharts(document.querySelector("#chart"), options);
     chart.render();
-    var chart2 = new ApexCharts(document.querySelector("#chart2"), options);
-    chart2.render();
-    var chart3 = new ApexCharts(document.querySelector("#chart3"), options);
-    chart3.render();
   }
+
+
+
+
 
 
   function backdata() {
@@ -224,10 +245,6 @@ body{
     }
     var chart = new ApexCharts(document.querySelector("#chart"), options);
     chart.render();
-    var chart2 = new ApexCharts(document.querySelector("#chart2"), options);
-    chart2.render();
-    var chart3 = new ApexCharts(document.querySelector("#chart3"), options);
-    chart3.render();
   }
 
 </script>

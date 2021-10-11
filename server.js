@@ -28,3 +28,5 @@ app.get('/winds', async (req, res) => {
 app.listen(4000,() => {
     console.log("start server http://localhost:4000")  //กำหนด port4000
 })
+
+
